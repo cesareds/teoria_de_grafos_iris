@@ -1,11 +1,28 @@
 # teoria_de_grafos_iris
-05/05/2023
-Nomes: César Eduardo de Souza & Bruno Arndt
-Disciplina: Teoria de Grafos
-Professor: Gilmário Barbosa dos Santos
 
+## O trabalho visa treinar um modelo que separe bases de dados em grupos, utilizando grafos.
 
-O arquivo "iris.h" é usado para atribuir bibliotecas, declarar variáveis, constantes e funções.
+- Autores: César Eduardo de Souza & Bruno Arndt
+- Disciplina: Teoria de Grafos (TEG: 4º Fase do curso Bacharelado em Ciência da Computação na UDESC)
+- Professor: Gilmário Barbosa dos Santos
+
+## Pré-requisitos
+
+- Clang
+
+## Compilação
+
+```console
+    clang main.c iris.c -lm
+```
+
+## Grafo gerado a partir de lista de adjacências
+
+![eita nois](https://github.com/cesareds/teoria_de_grafos_iris/blob/main/files/grafo.png?raw=true)
+
+## Mais informações
+
+O arquivo "iris.h" é usado para atribuir bibliotecas, declarar variáveis, constantes e funções (funciona usando CLang).
 O tal é conectado ao "iris.c", que descreve as funções usadas pela main.
 Tal qual executa o seguinte algoritmo: 
     abre os arquivos "IrisDataset.csv" e "output_grafo.txt";

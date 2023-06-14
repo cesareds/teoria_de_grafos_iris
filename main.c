@@ -76,7 +76,7 @@ int main()
     float **distancias_normalizadas = normalizadas(matriz_distancias, maior_distancia);
     for(i = 0; i < L; i++)
     {
-        for(j = 0; j < L; j++)
+        for(j = i; j < L; j++)
         {
             printf("\n%f", distancias_normalizadas[i][j]);
             if(distancias_normalizadas[i][j]<=0.3)

@@ -4,10 +4,10 @@ def convert_txt_to_dot(txt_file, dot_file):
 
     dot_data = "graph G{\n"
     rows = txt_data.split("\n")
-    for row in rows:
+    for i, row in enumerate(rows):
         values = row.split(",")
         joined_values = "--".join(values)
-        dot_data += "{};\n".format(joined_values.replace(",", ";\n"))
+        dot_data += "{}{}".format(joined_values.replace(",", ";\n"), "" if i == len(rows) - 1 else ";\n")
     dot_data += "}"
     with open(dot_file, 'w') as f:
         f.write(dot_data)

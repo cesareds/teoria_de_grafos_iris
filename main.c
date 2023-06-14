@@ -78,11 +78,11 @@ int main()
     {
         for(j = i; j < L; j++)
         {
-            printf("\n%f", distancias_normalizadas[i][j]);
-            if(distancias_normalizadas[i][j]<=0.3)
+            //printf("\n%f", distancias_normalizadas[i][j]);
+            if(i!=j && distancias_normalizadas[i][j]<=0.24)
             {
                 adjacencias[i][j]=1;
-                printf(" Liga por aresta os vértices %i e %i.\n", i, j);
+                //printf(" Liga por aresta os vértices %i e %i.\n", i, j);
             } else
             {
                 adjacencias[i][j]=0;
@@ -107,12 +107,7 @@ int main()
 
     converte_txt_para_dot("./files/output_grafo.txt", "./files/output.dot");
 
-    // descomentar para exibir gráfico da maneira como foi idealizada pelo monitor da disciplina e gerar o .dot por meio de código python
-    // system("./legacy/python3 txt_to_dot.py");
-    // system("python3 ./legacy/displayGrafo.py");
-
     printf("\nO output_grafo será exibido: \n");
-    
     system("neato -x -Goverlap=scale -Tpng ./files/output.dot > ./files/grafo.png");
 
 

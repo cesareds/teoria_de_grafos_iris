@@ -18,12 +18,12 @@ float maior(float **lista){
 float **normalizadas(float **distancias, float maior){
     float **normalizadas = malloc(sizeof(float*)*L);
     for(i = 0; i<L; i++){
-        printf("%i\n", i);
+        //printf("%i\n", i);
         normalizadas[i] = malloc(sizeof(float)*L);
     }
     for (i = 0; i < L; ++i) {
         for (j = 0; j < L; ++j) {
-            printf("%f\n", distancias[i][j]);
+            //printf("%f\n", distancias[i][j]);
         }
     }
 
@@ -35,18 +35,16 @@ float **normalizadas(float **distancias, float maior){
 
     return normalizadas;
 }
-
-
 void converte_txt_para_dot(const char* txt_file, const char* dot_file) {
     FILE* txt_fp = fopen(txt_file, "r");
     if (txt_fp == NULL) {
-        printf("Failed to open input file.\n");
+        printf("Erro ao abrir o arquivo txt.\n");
         return;
     }
 
     FILE* dot_fp = fopen(dot_file, "w");
     if (dot_fp == NULL) {
-        printf("Failed to open output file.\n");
+        printf("Erro ao carregar o arquivo dot.\n");
         fclose(txt_fp);
         return;
     }
@@ -69,5 +67,5 @@ void converte_txt_para_dot(const char* txt_file, const char* dot_file) {
     fclose(txt_fp);
     fclose(dot_fp);
 
-    printf("Conversion completed successfully.\n");
+    printf("Arquivo convertido de .txt para .dot\n");
 }

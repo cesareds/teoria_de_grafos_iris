@@ -74,22 +74,49 @@ int main()
     //distancias normalizadas com suas respectivas arestas
     float maior_distancia = maior(matriz_distancias);
     float **distancias_normalizadas = normalizadas(matriz_distancias, maior_distancia);
-    for(i = 0; i < L; i++)
-    {
-        for(j = i; j < L; j++)
-        {
-            //printf("\n%f", distancias_normalizadas[i][j]);
-            if(i!=j && distancias_normalizadas[i][j]<=0.24)
-            {
-                adjacencias[i][j]=1;
-                //printf(" Liga por aresta os vértices %i e %i.\n", i, j);
-            } else
-            {
-                adjacencias[i][j]=0;
-            }
-        }
-    }
+    float limiar = 0.2;
+    
 
+    
+    // while(limiar<0.3)
+    // {
+    //     int *grafo_final[2];
+    //     int count;
+    //     limiarizacao(adjacencias, distancias_normalizadas, limiar);
+    //     //escreve no arquivo txt
+    //     for(i = 0; i < L; i++)
+    //     {
+    //         for(j = 0; j < L; j++)
+    //         {
+    //             if(adjacencias[i][j])
+    //             {
+    //                 fprintf(output_grafo,  "%i,%i\n", i, j);
+    //                 grafo_final[0] = realloc(sizeof(int) * count);
+    //                 grafo_final[1] = realloc(sizeof(int) * count);
+    //                 grafo_final[0][count] = i;
+    //                 grafo_final[1][count] = j;
+    //                 count++;
+    //             }
+    //         }
+    //     }
+
+
+    //     //incrementa o limiar
+    //     limiar=limiar+0.0005;
+    // }
+
+    limiar = 0;
+    while(limiar<=1)
+    {
+        limiarizacao(adjacencias, distancias_normalizadas, limiar);
+
+        if(cnt_conected_components(adjacencias) <= 3) break;
+
+        //incrementa o limiar
+        limiar=limiar+0.0001;
+    }
+    printf("Limiar: %f\n", limiar);
+    printf("Qnt Grupos: %d\n", cnt_conected_components(adjacencias));
 
 
     //escreve no arquivo txt
@@ -107,8 +134,10 @@ int main()
 
     converte_txt_para_dot("./files/output_grafo.txt", "./files/output.dot");
 
-    printf("\nO output_grafo será exibido: \n");
+    printf("\nO output_grafo será gerado: \n");
     system("neato -x -Goverlap=scale -Tpng ./files/output.dot > ./files/grafo.png");
+    printf("dfs:\n");
+    system("python3 dfs.py");
 
 
     //fim

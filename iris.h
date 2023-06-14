@@ -9,6 +9,14 @@
 
 #define L 150
 #define C 4
+#define MAX_VERTICES 100
+
+
+typedef struct {
+    int vertices[MAX_VERTICES];
+    int numVertices;
+} Cluster;
+
 
 int i, j;
 float matriz[L][C];
@@ -19,6 +27,9 @@ char *valor;
 float distancia(float x1, float x2, float y1, float y2, float z1, float z2, float w1, float w2);
 float maior(float **lista);
 float **normalizadas(float **distancias, float maior);
+void limiarizacao(int **adjacencias, float **distancias_normalizadas, float limiar);
+void separarClusters(int grafo[][MAX_VERTICES], int numVertices, Cluster clusters[], int *numClusters);
 void converte_txt_para_dot(const char* txt_file, const char* dot_file);
+int cnt_conected_components(int** adjacencias);
 
 #endif 

@@ -105,12 +105,14 @@ int main()
     }
     fclose(output_grafo);
 
+    converte_txt_para_dot("./files/output_grafo.txt", "./files/output.dot");
 
+    // descomentar para exibir gráfico da maneira como foi idealizada pelo monitor da disciplina e gerar o .dot por meio de código python
+    // system("./legacy/python3 txt_to_dot.py");
+    // system("python3 ./legacy/displayGrafo.py");
 
-    // descomentar para exibir gráfico da maneira como foi idealizada pelo monitor da disciplina
     printf("\nO output_grafo será exibido: \n");
-    // system("python3 ./legacy/displayGrafo.py"); 
-    system("python3 txt_to_dot.py");
+    
     system("neato -x -Goverlap=scale -Tpng ./files/output.dot > ./files/grafo.png");
 
 

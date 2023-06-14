@@ -19,5 +19,6 @@ char *valor;
 float distancia(float x1, float x2, float y1, float y2, float z1, float z2, float w1, float w2);
 float maior(float **lista);
 float **normalizadas(float **distancias, float maior);
+void converte_txt_para_dot(const char* txt_file, const char* dot_file);
 
 #endif 

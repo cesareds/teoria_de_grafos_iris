@@ -4,7 +4,7 @@ int main()
 {
     //decalração do arquivo input csv:
     FILE *csv_input_vertices_dataset; 
-    csv_input_vertices_dataset = fopen("IrisDataset.csv", "r");
+    csv_input_vertices_dataset = fopen("./files/IrisDataset.csv", "r");
     if (csv_input_vertices_dataset == NULL) 
     {
         printf("Erro ao abrir o csv_input_vertices_dataset\n");
@@ -12,7 +12,7 @@ int main()
     }
     //declaração de txt de output para lista de adjacências:
     FILE *output_grafo;    
-    output_grafo = fopen("output_grafo.txt", "w");
+    output_grafo = fopen("./files/output_grafo.txt", "w");
     if(output_grafo == NULL)
     {
         printf("Erro ao criar csv_input_vertices_dataset de texto\n");
@@ -107,10 +107,11 @@ int main()
 
 
 
-    //chama função do sistema para programa em Python que gera Grafo em 3D (disponibilizado pelo professor)
+    // descomentar para exibir gráfico da maneira como foi idealizada pelo monitor da disciplina
     printf("\nO output_grafo será exibido: \n");
-    system("python3 displayGrafo.py");
-
+    // system("python3 ./legacy/displayGrafo.py"); 
+    system("python3 txt_to_dot.py");
+    system("neato -x -Goverlap=scale -Tpng ./files/output.dot > ./files/grafo.png");
 
 
     //fim
